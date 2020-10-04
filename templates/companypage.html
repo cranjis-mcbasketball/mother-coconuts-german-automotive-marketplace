@@ -118,7 +118,7 @@
     padding: 6em;'></div>
                         <div class="product-info">
                             <div class="product-name">{{ item.name }}</div>
-                            <div class="product-price">₹ {{ item.rate }}</div>
+                            <div class="product-price">$ {{ item.rate }}</div>
                             <div class="buttons">
                                 {% if company.user == request.user %}
                                 <form action="{% url 'view' product_slug=item.slug %}">{% csrf_token %}

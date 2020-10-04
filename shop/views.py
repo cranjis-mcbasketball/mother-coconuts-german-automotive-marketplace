@@ -9,7 +9,7 @@ from django.views.generic import ListView
 
 User = get_user_model()
 
-# Create your views here.
+# Create views
 
 
 def register(request):
@@ -140,7 +140,7 @@ def home(request):
         'companies': companies,
         'products': products,
     }
-    return render(request, "home.html", context)
+    return render(request, "home2.html", context)
 
 
 def addProduct(request):
@@ -274,7 +274,7 @@ def viewProduct(request, product_slug):
 
 
 class ProductView(ListView):
-    template_name = "home.html"
+    template_name = "home2.html"
     model = Product
     context_object_name = "products"
 

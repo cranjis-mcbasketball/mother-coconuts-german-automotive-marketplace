@@ -27,26 +27,27 @@ Your Cart
 {% if cartItems.count == 0 %}
 <div class="none">No items in cart.</div>
 {% else %}
-{% for item in cartItems %}
+
 <div class="cart-columns">
+    {% for item in cartItems %}
     <div class="product-image">
         <img src="{{item.product.product_image.url}}" height="100px">
     </div>
     <div class="product-name">{{item.product.name}}</div>
-    <div class="product-rate">₹ {{item.product.rate}}</div>
+    <div class="product-rate">$ {{item.product.rate}}0</div>
     <div>
         <form method="post" action="{% url 'cart' %}">
             {% csrf_token %}
             <div class="quantity-counter">
                 <input type="hidden" name="itemId" value="{{item.id}}">
                 <input type="submit" name="subtract" class="minus" value="-"></input>
-                <input type=" number" class="quantity" id="quantity" value="{{item.quantity}}" name="qty"></input>
+                <input type="number" class="quantity" id="quantity" value="{{item.quantity}}" name="qty"></input>
                 <input type="submit" name="add" class="plus" value="+"></input>
             </div>
 
         </form>
     </div>
-    <div class="product-cost">₹ {{item.cost}}</div>
+    <div class="product-cost">$ {{item.cost}}0</div>
     <form method="post" action="{% url 'cart' %}">
         {% csrf_token %}
         <input type="hidden" name="itemId" value="{{item.id}}">
@@ -59,7 +60,7 @@ Your Cart
 {% endfor %}
 <div class="total-row">
     <div class="total">Total: </div>
-    <div class="total-cost">₹ {{total_cost}}</div>
+    <div class="total-cost">$ {{total_cost}}0</div>
     <button class="checkout">
         <ion-icon name="checkmark-circle-outline"></ion-icon> Checkout
     </button>
@@ -79,20 +80,20 @@ Your Cart
             <img src="{{item.product.product_image.url}}" height="100px">
         </div>
         <div class="product-name">{{item.product.name}}</div>
-        <div class="product-rate">₹ {{item.product.rate}}</div>
+        <div class="product-rate">$ {{item.product.rate}}0</div>
         <div>
             <form method="post" action="{% url 'cart' %}">
                 {% csrf_token %}
                 <div class="quantity-counter">
                     <input type="hidden" name="itemId" value="{{item.id}}">
                     <input type="submit" name="subtract" class="minus" value="-"></input>
-                    <input type=" number" class="quantity" id="quantity" value="{{item.quantity}}" name="qty"></input>
+                    <input type="number" class="quantity" id="quantity" value="{{item.quantity}}" name="qty"></input>
                     <input type="submit" name="add" class="plus" value="+"></input>
                 </div>
 
             </form>
         </div>
-        <div class="product-cost">₹ {{item.cost}}</div>
+        <div class="product-cost">$ {{item.cost}}0</div>
         <form method="post" action="{% url 'cart' %}">
             {% csrf_token %}
             <input type="hidden" name="itemId" value="{{item.id}}">
@@ -133,7 +134,7 @@ Your Cart
 {% block script %}
 <script>
     function subtract() {
-        label = document.getElementById(" quantity"); q = Number(label.value); if (q > 1) {
+        label = document.getElementById("quantity"); q = Number(label.value); if (q > 1) {
             q = q - 1;
             label.value = q;
         }

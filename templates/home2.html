@@ -27,7 +27,19 @@
           Mother Coconuts' German Automotive Marketplace
         </a>
       </div>
+      {% if user.is_authenticated %}
       <div class="profile">
+        <!-- <div class="dropdown">
+          <button class="dropbtn">
+            <ion-icon name="person"></ion-icon>
+          </button>
+          <div class="dropdown-content">
+            <div class="current">Logged in as</div>
+            <div class="user">{{request.user}}</div>
+            <hr />
+            <a href="{% url 'user_logout' %}">Logout</a>
+          </div>
+        </div> -->
         <div class="dropdown">
           <button class="dropbtn">
             <ion-icon name="person"></ion-icon>
@@ -48,6 +60,7 @@
       <div class="cart">
         <a href="{% url 'cart' %}"><ion-icon name="cart"></ion-icon></a>
       </div>
+      {% endif %}
     </nav>
     <div class="bg">{% block heading %} {% endblock heading %}</div>
     <div class="info">{% block info %} {% endblock info %}</div>

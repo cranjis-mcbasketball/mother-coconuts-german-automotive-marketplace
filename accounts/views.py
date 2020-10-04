@@ -6,7 +6,7 @@ from django.contrib.auth import get_user_model
 from shop.models import *
 User = get_user_model()
 
-# Create your views here.
+# Create views
 
 
 def register(request):

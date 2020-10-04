@@ -6,7 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     {% block css %}
+    <link rel="stylesheet" href="{% static 'css/home.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/company.css' %}" />
     <link rel="stylesheet" href="{% static 'css/base2.css' %}" />
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     {% endblock css %}
     <script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -18,7 +24,39 @@
   </style>
 
   <body>
-    <div class="my-navbar-fixed-top scrolled">
+    <nav class="navbar-fixed-top">
+      <div class="search">
+        <ion-icon name="search"></ion-icon>
+      </div>
+      <div class="title">
+        <a href="{% url 'companylist' %}">
+          Mother Coconuts' German Automotive Marketplace
+        </a>
+      </div>
+      <div class="profile">
+        <div class="dropdown">
+          <button class="dropbtn">
+            <ion-icon name="person"></ion-icon>
+          </button>
+          <div class="dropdown-content">
+            <div class="current">Logged in as</div>
+            <div class="user">{{request.user}}</div>
+            <hr />
+            <a href="{% url 'user_logout' %}">Logout</a>
+          </div>
+        </div>
+      </div>
+      <div class="fav">
+        <a href="{% url 'wishlist' %}"
+          ><ion-icon name="heart-empty"></ion-icon
+        ></a>
+      </div>
+      <div class="cart">
+        <a href="{% url 'cart' %}"><ion-icon name="cart"></ion-icon></a>
+      </div>
+    </nav>
+
+    <!-- <div class="my-navbar-fixed-top scrolled">
       <div class="search">
         <ion-icon name="search"></ion-icon>
       </div>
@@ -32,7 +70,7 @@
       <div class="cart">
         <ion-icon name="cart"></ion-icon>
       </div>
-    </div>
+    </div> -->
     {% block content %} {% endblock content %}
   </body>
   {% block script %} {% endblock script %}
