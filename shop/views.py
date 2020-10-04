@@ -325,8 +325,10 @@ def cart(request):
             if 'subtract' in request.POST:
                 if cartitem.quantity != 1:
                     cartitem.quantity -= 1
+                    cartitem.cost = cartitem.quantity * cartitem.product.rate
             elif 'add' in request.POST:
                 cartitem.quantity += 1
+                cartitem.cost = cartitem.quantity * cartitem.product.rate
             elif 'save' in request.POST:
                 cartitem.is_saved_for_later = True
             elif 'cart' in request.POST:

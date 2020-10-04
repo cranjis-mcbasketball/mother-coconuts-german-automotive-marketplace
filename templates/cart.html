@@ -27,9 +27,8 @@ Your Cart
 {% if cartItems.count == 0 %}
 <div class="none">No items in cart.</div>
 {% else %}
-
+{% for item in cartItems %}
 <div class="cart-columns">
-    {% for item in cartItems %}
     <div class="product-image">
         <img src="{{item.product.product_image.url}}" height="100px">
     </div>
@@ -47,7 +46,7 @@ Your Cart
 
         </form>
     </div>
-    <div class="product-cost">$ {{item.cost}}0</div>
+    <div class="product-cost" id="{{item.id}}cost">$ {{item.cost}}0</div>
     <form method="post" action="{% url 'cart' %}">
         {% csrf_token %}
         <input type="hidden" name="itemId" value="{{item.id}}">
@@ -87,7 +86,7 @@ Your Cart
                 <div class="quantity-counter">
                     <input type="hidden" name="itemId" value="{{item.id}}">
                     <input type="submit" name="subtract" class="minus" value="-"></input>
-                    <input type="number" class="quantity" id="quantity" value="{{item.quantity}}" name="qty"></input>
+                    <input type=" number" class="quantity" id="quantity" value="{{item.quantity}}" name="qty"></input>
                     <input type="submit" name="add" class="plus" value="+"></input>
                 </div>
 
@@ -145,6 +144,15 @@ Your Cart
         q = Number(label.value);
         q = q + 1;
         label.value = q;
+    
+        itemTotalCost = document.getElementById("{{item.id}}cost")
+        itemTotalCostNew = Number(itemTotalCost.value) * q 
+        console.log(itemTotalCostNew)
+        console.log("itemTotalCost", itemTotalCost)
+        itemTotalCost = "$ {{" + itemTotalCostNew + "}}0"
+        console.log("itemTotalCost", itemTotalCost)
+        totalCost = document.getElementById("total-cost")
+
     }
 
 </script>
