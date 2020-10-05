@@ -69,6 +69,7 @@ class Product(models.Model):
     slug = models.SlugField(max_length=250, null=True, blank=True)
     rate = models.FloatField(default=0)
     description = models.CharField(max_length=1000, blank=True)
+    instructions = models.CharField(max_length=250, null=True, blank=True)
     in_stock = models.IntegerField(default=0)
     company = models.ForeignKey(
         Company, on_delete=models.CASCADE, null=True)

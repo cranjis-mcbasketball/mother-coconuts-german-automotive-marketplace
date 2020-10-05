@@ -152,6 +152,7 @@ def addProduct(request):
                 new_product.name = request.POST['product_name']
                 new_product.description = request.POST['description']
                 new_product.rate = request.POST['rate']
+               new_product.instructions = request.POST['instructions']
                 new_product.in_stock = request.POST['in_stock']
                 new_product.company = Company.objects.filter(
                     user=request.user).first()
@@ -173,6 +174,7 @@ def addProduct(request):
                         new_product.product_image = form.cleaned_data['product_image']
                     new_product.description = form.cleaned_data['description']
                     new_product.rate = form.cleaned_data['rate']
+                    new_product.instructions = form.cleaned_data['instructions']
                     new_product.in_stock = form.cleaned_data['in_stock']
                     new_product.company = Company.objects.filter(
                         user=request.user).first()
@@ -197,6 +199,7 @@ def editProduct(request, product_slug):
                 product.name = request.POST['product_name']
                 product.description = request.POST['description']
                 product.rate = request.POST['rate']
+                product.instructions = request.POST['instructions']
                 product.in_stock = request.POST['in_stock']
                 product.save()
                 return HttpResponseRedirect(reverse('profile', kwargs={'user_id': request.user.id}))

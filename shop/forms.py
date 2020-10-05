@@ -7,6 +7,7 @@ class CreateNewProduct(forms.Form):
     description = forms.CharField(max_length=1000)
     subcategory = forms.ModelChoiceField(queryset=Subcategory.objects.all())
     rate = forms.FloatField()
+    instructions = forms.CharField(max_length=250)
     in_stock = forms.IntegerField()
     product_image = forms.ImageField(required=False)
 
@@ -23,4 +24,4 @@ class CompanyProfile(forms.Form):
 class EditProduct(forms.ModelForm):
     class Meta:
         model = Product
-        fields = ['name', 'description', 'rate', 'in_stock', 'product_image']
+        fields = ['name', 'description', 'rate', 'instructions', 'in_stock', 'product_image']

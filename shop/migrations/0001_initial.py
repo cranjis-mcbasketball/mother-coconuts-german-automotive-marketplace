@@ -72,6 +72,7 @@ class Migration(migrations.Migration):
                 ('slug', models.SlugField(blank=True, max_length=250, null=True)),
                 ('rate', models.FloatField(default=0)),
                 ('description', models.CharField(blank=True, max_length=1000)),
+                ('instructions', models.CharField(max_length=250, null=True)),
                 ('in_stock', models.IntegerField(default=0)),
                 ('product_image', models.ImageField(blank=True, default='product_images/default.jpg', null=True, upload_to='product_images')),
             ],

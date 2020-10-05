@@ -144,15 +144,6 @@ Your Cart
         q = Number(label.value);
         q = q + 1;
         label.value = q;
-    
-        itemTotalCost = document.getElementById("{{item.id}}cost")
-        itemTotalCostNew = Number(itemTotalCost.value) * q 
-        console.log(itemTotalCostNew)
-        console.log("itemTotalCost", itemTotalCost)
-        itemTotalCost = "$ {{" + itemTotalCostNew + "}}0"
-        console.log("itemTotalCost", itemTotalCost)
-        totalCost = document.getElementById("total-cost")
-
     }
 
 </script>

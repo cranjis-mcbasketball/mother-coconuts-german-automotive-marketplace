@@ -30,10 +30,11 @@ Installing requirements and making migrations
 
     python -m pip install --upgrade pip
     pip install -r requirements.txt
-    cd bazaar
-    python ../manage.py makemigrations
-    python ../manage.py migrate
-    python ../manage.py runserver
+
+After updating schema fields to a table:
+python manage.py makemigrations
+python manage.py migrate
+python manage.py runserver
 
 Once connected to the server...
 
